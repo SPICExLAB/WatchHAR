@@ -1,0 +1,93 @@
+# Default configuration for AudioIMU training
+# Settings match edge_har_chi25 for 92% context-wise accuracy
+
+# Data settings
+data:
+  dataset_path: "./preprocessed_data"  # Path to preprocessed data
+  sampling_rate: 1000  # 1kHz audio (downsampled from 16kHz)
+  imu_win_sec: 1  # IMU window in seconds
+  hop_length: 5  # hop length in IMU samples
+  use_raw_audio: false  # true for raw audio, false for mel spectrogram
+
+# Audio preprocessing
+audio:
+  n_mels: 64
+  stft_window_sec: 0.025  # 25ms STFT window
+  stft_hop_sec: 0.01  # 10ms STFT hop -> produces 96 frames
+  audio_window_sec: 0.96  # 0.96 second audio window -> 96 frames
+  trainable_mel: false
+
+# Audio preprocessing for samosa
+# audio:
+#   n_mels: 64
+#   stft_window_sec: 0.6  # 25ms STFT window
+#   stft_hop_sec: 0.03  # 10ms STFT hop -> produces 96 frames
+#   audio_window_sec: 2.88  # 0.96 second audio window -> 96 frames
+#   trainable_mel: false
+
+# IMU settings
+imu:
+  sampling_rate: 50
+  sensors: "acc,gyro"  # all, acc, gyro, rotvec, or comma-separated list
+  window_length: 50  # samples (1 second at 50Hz)
+
+# Model settings
+model:
+  imu_model: "cnn2d"
+  audio_model: "mn05"
+  fusion_model: "individualgf"
+  num_classes: 27
+
+  # IMU model parameters
+  imu:
+    cnn_channels: 256
+    dropout: 0.5
+
+  # Audio model parameters
+  audio:
+    width_mult: 0.5
+    input_dim_t: 96  # 0.96 second / 10ms hop = 96 frames
+    input_dim_f: 64
+    feature_extraction: true
+
+  # Fusion parameters
+  fusion:
+    hidden_dim: 256
+    dropout: 0.25
+
+# Training settings
+training:
+  batch_size: 32
+  epochs: 50
+  learning_rate: 0.00004
+  min_lr: 0.000001
+  patience: 3
+  early_stopping_patience: 5
+
+  # Data augmentation
+  augmentation:
+    rframe_transformation: true
+    channel_dropout: true
+
+  # Loss function
+  loss:
+    use_class_weights: true
+    criterion: "bce"
+
+# Validation settings
+validation:
+  method: "lopo"  # lopo (Leave-One-Participant-Out) or split
+  val_participant_seed: 4
+
+# Output settings
+output:
+  save_dir: "./trained_models"
+  experiment_name: "audioimu_default"
+  save_best_only: true
+  log_interval: 10
+
+# Hardware settings
+hardware:
+  device: "cuda"
+  num_workers: 4
+  pin_memory: true

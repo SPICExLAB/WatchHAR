@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Data files
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.h5
+*.hdf5
+
+# Dataset directories
+Dataset/
+preprocessed_data/
+
+# Model checkpoints
+trained_models/
+*.pt
+*.pth
+*.ckpt
+
+# Logs and scripts
+slurm_logs/
+*.log
+logs/
+scripts/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+*.egg-info/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
