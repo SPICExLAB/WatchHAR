@@ -2,6 +2,10 @@
 
 Official Repository for WatchHAR: Real-time On-device Human Activity Recognition System for Smartwatches (ICMI'25)
 
+<p align="center">
+  <img src="teaser.gif" alt="WatchHAR Demo" width="600">
+</p>
+
 ## Overview
 
 WatchHAR is a multimodal human activity recognition system that fuses audio and IMU sensor data for real-time activity recognition on smartwatches. This repository contains the training pipeline using Leave-One-Participant-Out (LOPO) cross-validation on the SAMoSA dataset.
