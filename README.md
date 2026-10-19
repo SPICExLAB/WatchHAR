@@ -81,6 +81,33 @@ This generates:
 
 ---
 
+## 16 kHz Pretrained Models
+
+`pretrained/lopo_16k/` contains the 20 LOPO models trained with 16 kHz audio (`config/16k.yaml`). This is the same setup as above except that the audio is not downsampled. `best_model_excluded_<ID>.pt` was trained without participant `<ID>`.
+
+```bash
+# Preprocess at 16 kHz
+python preprocess.py ./Dataset ./preprocessed_data_16k --audio-sr 16000
+
+# Evaluate the pretrained LOPO models
+python evaluate.py --experiment-dir ./pretrained/lopo_16k
+
+# Or train them yourself (one participant shown)
+python train.py --config config/16k.yaml --target-participants 103
+```
+
+LOPO results over the 20 SAMoSA participants:
+
+| Metric | Accuracy |
+|---|---|
+| Frame-wise | 0.7774 ± 0.0547 |
+| File-wise | 0.9173 ± 0.0543 |
+| Context-wise | 0.9580 |
+
+The full report is in `pretrained/lopo_16k/evaluation_results.txt`.
+
+---
+
 ## Configuration
 
 Main configuration file: `config/default.yaml`

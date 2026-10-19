@@ -15,12 +15,17 @@ __pycache__/
 # Dataset directories
 Dataset/
 preprocessed_data/
+preprocessed_data_16k/
 
 # Model checkpoints
 trained_models/
 *.pt
 *.pth
 *.ckpt
+
+# Released pretrained models (checkpoints + normalization params)
+!pretrained/**/*.pt
+!pretrained/**/*.pkl
 
 # Logs and scripts
 slurm_logs/
