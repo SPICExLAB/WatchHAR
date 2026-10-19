@@ -1,0 +1,58 @@
+AudioIMU Evaluation Results
+==================================================
+
+Frame-wise Results (per window):
+------------------------------
+Accuracy: 0.7774 ± 0.0547
+F1_score: 0.7747 ± 0.0546
+Precision: 0.8007 ± 0.0465
+Recall: 0.7798 ± 0.0503
+
+File-wise Results (per recording, summed probs):
+------------------------------
+Accuracy: 0.9173 ± 0.0543
+F1_score: 0.9053 ± 0.0623
+Precision: 0.9152 ± 0.0609
+Recall: 0.9179 ± 0.0543
+
+Context-independent Results (file-wise, unconstrained):
+------------------------------
+Accuracy: 0.9173 ± 0.0543
+F1_score: 0.9053 ± 0.0623
+Precision: 0.9152 ± 0.0609
+Recall: 0.9179 ± 0.0543
+
+Context-wise Per-file Results (summed probs, constrained):
+------------------------------
+
+Kitchen Context:
+  Accuracy: 0.9417 ± 0.0677
+  F1_score: 0.9332 ± 0.0799
+  Precision: 0.9458 ± 0.0741
+  Recall: 0.9417 ± 0.0677
+
+Bathroom Context:
+  Accuracy: 0.9611 ± 0.0826
+  F1_score: 0.9520 ± 0.1077
+  Precision: 0.9515 ± 0.1192
+  Recall: 0.9611 ± 0.0826
+
+Misc Context:
+  Accuracy: 0.9574 ± 0.0555
+  F1_score: 0.9477 ± 0.0720
+  Precision: 0.9501 ± 0.0788
+  Recall: 0.9574 ± 0.0555
+
+Workshop Context:
+  Accuracy: 0.9719 ± 0.0624
+  F1_score: 0.9676 ± 0.0754
+  Precision: 0.9675 ± 0.0844
+  Recall: 0.9719 ± 0.0624
+
+Overall Context-wise Metrics:
+------------------------------
+Accuracy: 0.9580
+F1_score: 0.9501
+Precision: 0.9538
+Recall: 0.9580
+
